@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "nama": "Kain Sasirangan Motif Ombak Sinapur Karang",
+    "kategori": "kain",
+    "harga": 180000,
+    "gambar": "img/ombak-sinapur-karang.svg",
+    "deskripsi": "Kain katun satin 2 meter bermotif gelombang karang yang melambangkan keteguhan hati."
+  },
+  {
+    "id": 2,
+    "nama": "Kain Sasirangan Motif Gigi Haruan",
+    "kategori": "kain",
+    "harga": 170000,
+    "gambar": "img/gigi-haruan.svg",
+    "deskripsi": "Motif zig-zag khas Banjar dengan pewarnaan alami yang tajam dan tidak mudah pudar."
+  },
+  {
+    "id": 3,
+    "nama": "Kain Sasirangan Motif Kambang Kacang",
+    "kategori": "kain",
+    "harga": 165000,
+    "gambar": "img/kambang-kacang.svg",
+    "deskripsi": "Motif bunga kacang simbol kerukunan, berbahan katun primisima halus ukuran 2 x 1,15 meter."
+  },
+  {
+    "id": 4,
+    "nama": "Kain Sasirangan Motif Naga Balimbur",
+    "kategori": "kain",
+    "harga": 210000,
+    "gambar": "img/naga-balimbur.svg",
+    "deskripsi": "Kain eksklusif bermotif Naga Balimbur dengan detail jelujur tangan pengrajin Martapura."
+  },
+  {
+    "id": 5,
+    "nama": "Kain Sasirangan Motif Bayam Raja",
+    "kategori": "kain",
+    "harga": 195000,
+    "gambar": "img/bayam-raja.svg",
+    "deskripsi": "Motif klasik bernuansa elegan yang melambangkan martabat dan kehormatan."
+  },
+  {
+    "id": 6,
+    "nama": "Kemeja Batik Sasirangan Pria Lengan Pendek",
+    "kategori": "pakaian",
+    "harga": 250000,
+    "gambar": "img/baju sasirangan.jpg",
+    "deskripsi": "Kemeja Sasirangan dengan perpaduan warna biru dan krem yang elegan, klasik, dan menawan."
+  },
+  {
+    "id": 7,
+    "nama": "Tapih Sasirangan Khas Banjar",
+    "kategori": "pakaian",
+    "harga": 150000,
+    "gambar": "img/tapih sasirangan.jpg",
+    "deskripsi": "Tapih Sasirangan dengan motif tradisional Banjar dan perpaduan warna yang menarik."
+  },
+  {
+    "id": 8,
+    "nama": "Tas Laptop Motif Sasirangan",
+    "kategori": "aksesoris",
+    "harga": 215000,
+    "gambar": "img/tas laptop.jpg",
+    "deskripsi": "Tas laptop Sasirangan bermotif khas Banjar yang memadukan unsur tradisional dengan desain fungsional."
+  },
+  {
+    "id": 9,
+    "nama": "Selendang Panjang Motif Iris Pudak",
+    "kategori": "aksesoris",
+    "harga": 115000,
+    "gambar": "img/iris-pudak.svg",
+    "deskripsi": "Selendang ringan dengan pinggiran rumbai rapi bermotif irisan daun pandan wangi."
+  },
+  {
+    "id": 10,
+    "nama": "Baju Sasirangan Lengan Panjang Eksklusif",
+    "kategori": "pakaian",
+    "harga": 265000,
+    "gambar": "img/baju sasirangan.jpg",
+    "deskripsi": "Pakaian Sasirangan bahan katun lembut berkualitas tinggi dengan corak khas Kalimantan Selatan."
+  },
+  {
+    "id": 11,
+    "nama": "Pouch Make Up Sasirangan",
+    "kategori": "aksesoris",
+    "harga": 50000,
+    "gambar": "img/pouch make up sasirangan.jpeg",
+    "deskripsi": "Pouch serbaguna bermotif Sasirangan Banjar yang praktis dibawa bepergian."
+  },
+  {
+    "id": 12,
+    "nama": "Syal Kain Sasirangan",
+    "kategori": "aksesoris",
+    "harga": 35000,
+    "gambar": "img/syal kain sasirangan.jpg",
+    "deskripsi": "Syal kain Sasirangan dengan tekstur lembut dan motif khas Banjar yang menawan."
+  }
+]
