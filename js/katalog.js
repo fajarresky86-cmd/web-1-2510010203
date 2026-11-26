@@ -1,101 +1,4 @@
-const katalog = [
-    {
-        id: 1,
-        nama: "Kain Sasirangan Motif Ombak Sinapur Karang",
-        kategori: "kain",
-        harga: 180000,
-        gambar: "img/ombak-sinapur-karang.svg",
-        deskripsi: "Kain katun satin 2 meter bermotif gelombang karang yang melambangkan keteguhan hati."
-    },
-    {
-        id: 2,
-        nama: "Kain Sasirangan Motif Gigi Haruan",
-        kategori: "kain",
-        harga: 170000,
-        gambar: "img/gigi-haruan.svg",
-        deskripsi: "Motif zig-zag khas Banjar dengan pewarnaan alami yang tajam dan tidak mudah pudar."
-    },
-    {
-        id: 3,
-        nama: "Kain Sasirangan Motif Kambang Kacang",
-        kategori: "kain",
-        harga: 165000,
-        gambar: "img/kambang-kacang.svg",
-        deskripsi: "Motif bunga kacang simbol kerukunan, berbahan katun primisima halus ukuran 2 x 1,15 meter."
-    },
-    {
-        id: 4,
-        nama: "Kain Sasirangan Motif Naga Balimbur",
-        kategori: "kain",
-        harga: 210000,
-        gambar: "img/naga-balimbur.svg",
-        deskripsi: "Kain eksklusif bermotif Naga Balimbur dengan detail jelujur tangan pengrajin Martapura."
-    },
-    {
-        id: 5,
-        nama: "Kain Sasirangan Motif Bayam Raja",
-        kategori: "kain",
-        harga: 195000,
-        gambar: "img/bayam-raja.svg",
-        deskripsi: "Motif klasik bernuansa elegan yang melambangkan martabat dan kehormatan."
-    },
-    {
-        id: 6,
-        nama: "Batik Sasirangan pria lengan pendek",
-        kategori: "pakaian",
-        harga: 250000,
-        gambar: "img/baju sasirangan.jpg",
-        deskripsi: "Jatik Sasirangan dengan perpaduan warna biru dan krem yang memberikan kesan elegan, klasik, dan menawan. Memiliki motif khas berupa perpaduan pola gelombang, sulur, lingkaran, dan ornamen geometris yang tersusun harmonis di seluruh bagian kain."
-    },
-    {
-        id: 7,
-        nama: "Tapih Sasirangan ",
-        kategori: "pakaian",
-        harga: 150000,
-        gambar: "img/tapih sasirangan.jpg",
-        deskripsi: "Tapih Sasirangandengan motif khas Banjar dan warna yang menarik."
-    },
-    {
-        id: 8,
-        nama: "Tas Laptop",
-        kategori: "aksesoris",
-        harga: 215000,
-        gambar: "img/tas laptop.jpg",
-        deskripsi: "as laptop Sasirangan dengan motif khas Banjar yang unik dan menarik, memadukan unsur tradisional dengan desain praktis untuk melindungi dan membawa laptop."
-    },
-    {
-        id: 9,
-        nama: "Selendang Panjang Motif Iris Pudak",
-        kategori: "aksesoris",
-        harga: 115000,
-        gambar: "img/iris-pudak.svg",
-        deskripsi: "Selendang ringan dengan pinggiran rumbai rapi bermotif irisan daun pandan wangi."
-    },
-    {
-        id: 10,
-        nama: "baju kaos lengan panjang",
-        kategori: "pakaian",
-        harga: 125000,
-        gambar: "img/baju kaos lengan panjang.jpg",
-        deskripsi: "baju kaos lengan panjang dengan kualitas tinggi dan style yang menarik."
-    },
-    {
-        id: 11,
-        nama: "pouch make up Sasirangan",
-        kategori: "aksesoris",
-        harga: 50000,
-        gambar: "img/pouch make up Sasirangan.jpeg",
-        deskripsi: "Pouch make up Sasirangan dengan motif khas Banjar yang unik dan menarik."
-    },
-    {
-        id: 12,
-        nama: "syal kain sasirangan",
-        kategori: "aksesoris",
-        harga: 35000,
-        gambar: "img/syal kain sasirangan.jpg",
-        deskripsi: "Syal kain Sasirangan dengan motif khas Banjar yang unik dan menarik."
-    }
-];
+let katalog = [];
 
 const daftarKatalog = document.querySelector("#daftar-katalog");
 const inputCari = document.querySelector("#cari");
@@ -171,7 +74,7 @@ function tampilkanKatalog(daftarProduk) {
 }
 
 function saringKatalog() {
-    const kataKunci = inputCari.value.trim().toLowerCase();
+    const kataKunci = inputCari ? inputCari.value.trim().toLowerCase() : "";
 
     const hasil = katalog.filter((produk) => {
         const cocokKategori =
@@ -186,6 +89,89 @@ function saringKatalog() {
     });
 
     tampilkanKatalog(hasil);
+}
+
+async function muatKatalog() {
+    if (!daftarKatalog) return;
+
+    if (infoJumlah) {
+        infoJumlah.textContent = "Memuat katalog produk...";
+    }
+
+    try {
+        const respons = await fetch("data/katalog.json");
+        if (!respons.ok) {
+            throw new Error(`HTTP error! Status: ${respons.status}`);
+        }
+        katalog = await respons.json();
+        tampilkanKatalog(katalog);
+    } catch (galat) {
+        console.error("Gagal memuat data katalog:", galat);
+        if (infoJumlah) {
+            infoJumlah.textContent = "Gagal memuat katalog produk.";
+        }
+        const pesanError = document.createElement("p");
+        pesanError.textContent = "Terjadi kendala saat mengambil data katalog. Silakan muat ulang halaman.";
+        daftarKatalog.replaceChildren(pesanError);
+    }
+}
+
+async function muatJadwalSalat() {
+    const wadahSalat = document.querySelector("#isi-jadwal-salat");
+    const infoTanggal = document.querySelector("#tanggal-salat");
+    if (!wadahSalat) return;
+
+    const ID_KOTA = "2113";
+    const sekarang = new Date();
+    const tahun = sekarang.getFullYear();
+    const bulan = String(sekarang.getMonth() + 1).padStart(2, "0");
+    const tanggal = String(sekarang.getDate()).padStart(2, "0");
+
+    const url = `https://api.myquran.com/v2/sholat/jadwal/${ID_KOTA}/${tahun}/${bulan}/${tanggal}`;
+
+    try {
+        const respons = await fetch(url);
+        if (!respons.ok) {
+            throw new Error(`HTTP error! Status: ${respons.status}`);
+        }
+        const hasil = await respons.json();
+        if (!hasil.status || !hasil.data || !hasil.data.jadwal) {
+            throw new Error("Format jadwal salat tidak valid");
+        }
+
+        const jadwal = hasil.data.jadwal;
+        if (infoTanggal) {
+            infoTanggal.textContent = `${hasil.data.lokasi} — ${jadwal.tanggal}`;
+        }
+
+        const waktuSalat = [
+            { nama: "Subuh", jam: jadwal.subuh },
+            { nama: "Dzuhur", jam: jadwal.dzuhur },
+            { nama: "Ashar", jam: jadwal.ashar },
+            { nama: "Maghrib", jam: jadwal.maghrib },
+            { nama: "Isya", jam: jadwal.isya }
+        ];
+
+        wadahSalat.replaceChildren();
+        waktuSalat.forEach((item) => {
+            const kartu = document.createElement("div");
+            kartu.className = "kartu-waktu-salat";
+
+            const nama = document.createElement("span");
+            nama.className = "nama-salat";
+            nama.textContent = item.nama;
+
+            const jam = document.createElement("strong");
+            jam.className = "jam-salat";
+            jam.textContent = `${item.jam} WITA`;
+
+            kartu.append(nama, jam);
+            wadahSalat.append(kartu);
+        });
+    } catch (galat) {
+        console.error("Gagal memuat jadwal salat:", galat);
+        wadahSalat.textContent = "Jadwal salat sementara tidak dapat dimuat.";
+    }
 }
 
 if (inputCari) {
@@ -208,4 +194,5 @@ tombolFilter.forEach((tombol) => {
     });
 });
 
-tampilkanKatalog(katalog);
+muatKatalog();
+muatJadwalSalat();
